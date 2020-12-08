@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>4 лабораторная работа</title>
+</head>
+
+<body>
+    <header>
+        <h1>
+            <strong>
+                <center>
+                    3 задание.
+                </center>
+            </strong>
+        </h1>
+    </header>
+    <ul>Объект navigator:</ul>
+    <div id="navig" class="alert alert-waring">
+    </div>
+    <script>
+        var navig = "";
+        for (var property in navigator) {
+            navig += "<strong>" + property + "</strong> :" + navigator[property];
+            navig += "<br />";
+        }
+        document.getElementById("navig").innerHTML = navig;
+
+    </script>
+
+    <ul>Объект document:</ul>
+    <div id="docInfo" class="alert alert-info"></div>
+    <script>
+        var documentURL = document.URL;
+        var documentURI = document.URI;
+        var documentDomain = document.domain;
+        var result = "URL: " + documentURL + "<br>";
+        result += "URI: " + documentURI + "<br>";
+        result += "Домен: " + documentDomain;
+        window.document.getElementById("docInfo").innerHTML = result;
+
+    </script>
+
+    <ul>Объект location:</ul>
+    <div id="propertiesLocation" class="alert alert-warning"></div>
+    <script>
+        var stringPropertiesLocation = "";
+        for (var property in location) {
+            stringPropertiesLocation += "Свойство/метод: <strong>" + property + "</strong>. ";
+            stringPropertiesLocation += "Значение: <strong>" + location[property] + "</strong> ";
+            stringPropertiesLocation += "<strong>Тип: </strong>" + typeof location[property];
+            stringPropertiesLocation += "<br />";
+        }
+        document.getElementById("propertiesLocation").innerHTML = stringPropertiesLocation;
+
+    </script>
+
+    <ul>Объект window:</ul>
+    <script>
+        function myWindowOpen() {
+            var myWindow = window.open("", "", "width=200,height=100");
+        }
+
+        function myWindowFocus() {
+            myWindow.focus();
+        }
+
+        function myWindowBlur() {
+            myWindow.blur();
+        }
+
+    </script>
+
+    <button onclick="myWindowOpen()">Открыть окно</button>
+    <button onclick="myWindowFocus()">Передать фокус окну</button>
+    <button onclick="myWindowBlur()">Переместить окно на задний план</button>
+
+    <h2>
+        <strong>
+            <center>
+                4 задание.
+            </center>
+        </strong>
+    </h2>
+
+    <script>
+        let arr = [];
+        let tmp = 0;
+
+        function createMatrix() {
+            for (let i = 0; i < 10; i++) {
+                arr[i] = [];
+
+                for (let j = 0; j < 10; j++) {
+                    arr[i][j] = Math.floor(Math.random() * 9);
+                }
+            }
+        }
+
+        function sortMatrix() {
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 9; j++) {
+                    for (let k = j + 1; k < 10; k++) {
+                        if ((i % 2 == 0) && (arr[i][j] < arr[i][k])) {
+                            tmp = arr[i][j];
+                            arr[i][j] = arr[i][k];
+                            arr[i][k] = tmp;
+                        } else if ((i % 2 != 0) && (arr[i][j] > arr[i][k])) {
+                            tmp = arr[i][j];
+                            arr[i][j] = arr[i][k];
+                            arr[i][k] = tmp;
+                        }
+                    }
+                }
+            }
+
+        }
+
+        function displayMatrix() {
+            for (let i = 0; i < 10; i++) {
+                for (let j = 0; j < 10; j++) {
+                    document.write(arr[i][j] + " ");
+                }
+                document.write("<br>");
+            }
+        }
+
+    </script>
+    <button onclick="createMatrix()">Создать матрицу</button>
+    <button onclick="sortMatrix()"> Сортировка </button>
+    <button onclick="displayMatrix()"> Вывести матрицу </button>
+
+    <h3>
+        <strong>
+            <center>
+                5 задание.
+            </center>
+        </strong>
+    </h3>
+
+    <input id="num1" name="num1"><label for="num1">X1</label>
+    <input id="num2" name="num2"><label for="num2">X2</label>
+    <input id="num3" name="num3"><label for="num3">X3</label>
+    <label for="=">=</label><input id="num=1" name="=">
+    <br>
+    <input id="num4" name="num4"><label for="num4">X1</label>
+    <input id="num5" name="num5"><label for="num5">X2</label>
+    <input id="num6" name="num6"><label for="num6">X3</label>
+    <label for="=">=</label><input id="num=2" name="=">
+    <br>
+    <input id="num7" name="num7"><label for="num7">X1</label>
+    <input id="num8" name="num8"><label for="num8">X2</label>
+    <input id="num9" name="num9"><label for="num9">X3</label>
+    <label for="=">=</label><input id="num=3" name="=">
+    <br>
+    <script src="script.js"></script>
+    <br>
+    <br>
+    <label for="x1">X1=</label><input id="x1" name="x1">
+    <br>
+    <label for="x2">X2=</label><input id="x2" name="x2">
+    <br>
+    <label for="x3">X3=</label><input id="x3" name="x3">
+    <br>
+    <br>
+    <button onclick="generate()">Решение системы</button>
+</body>
+
+</html>
